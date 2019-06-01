@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # Agregando aplicaciones independientes de Django
     'Login',
+    'Example',
     'rest_framework',
     'rest_framework.authtoken',
 ]
@@ -149,13 +150,12 @@ if not DEBUG:
         
     DATABASES = {
         'default': {
-            'ENGINE' : 'django.db.backends.sqlite3',
-            'NAME' : 'os.path.join(PROJECT_PATH. ''database.sqlite)',
-            
-            # 'USER': 'root',
-            # 'PASSWORD': '',
-            # 'HOST': 'localhost',
-            # 'PORT': '3306'
+            'ENGINE' : 'django.db.backends.postgresql_psycopg2',
+            'NAME' : 'DB_NAME',            
+            'USER': 'DB_USER',
+            'PASSWORD': 'DB_PASSWORD',
+            'HOST': 'DB_HOST',
+            'PORT': 'DB_PORT'
         }
     }
 
