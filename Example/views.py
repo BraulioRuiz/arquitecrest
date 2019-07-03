@@ -14,7 +14,15 @@ class ExampleList(APIView):
     #metodo get para solicitar info
     def get(self, request, format=None):
         queryset = Example.objects.filter(delete = False)
-        serializer = ExampleSerializers(queryset)
+        serializer = ExampleSerializers(queryset, many=True)
         return Response(serializer.data)
+    
+    def post(self, request, format=None):
+        serializer = ExampleSerializers(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            datas = serializer.data
+            return Response(datas)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
 # Create your views here.
